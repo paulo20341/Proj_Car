@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Rent a Car</title>
+</head>
+<body>
+    <section id="header">
+        <div id="menu">
+            <div id="logo">
+                <img src="imagens/logo.png" width="84">
+            </div>
+            <nav>
+                <ul class="poppins-light">
+                    <li>Home</li>
+                    <li>Veículos</li>
+                    <li>Minha conta</li>
+                    <li>Contato</li>
+                </ul>
+            </nav>
+            <div></div> 
+        </div>
+    </section>
+    <section id="content">        
+        <main id="main">
+        <!-- veiculos -->
+          <section id="Veiculos">
+            <h1>Formulário Cadastrar Veículos</h1>
+            <section id="secaoFormulario"> 
+                <form method="post" action="#" enctype="multipart/form-data">
+                    <div id="formulario">
+                        <div class="blocoFormulario">
+                            <label>Marca</label>
+                            <input type="text" name="marca" placeholder="Nome veículo" class="inputBase">
+                        </div>
+                        <div class="blocoFormulario">
+                            <label>Modelo</label>
+                            <input type="text" name="marca" placeholder="Modelo" class="inputBase">
+                        </div>
+                        <div class="blocoFormulario">
+                            <label>Placa</label>
+                            <input type="text" name="marca" placeholder="Placa" class="inputBase">
+                        </div>
+                        <div class="blocoFormulario">
+                            <label>Valor</label>
+                            <input type="text" name="marca" placeholder="Valor" class="inputBase">
+                        </div>
+                        <div class="blocoFormulario">
+                            <label>Status</label>
+                            <select class="inputBase">
+                                <option value="0">Inativado</option>
+                                <option value="1" selected>Ativo</option>
+                            </select>
+                        </div>
+                        <div class="blocoFormulario">
+                            <label>Imagem</label>
+                            <input type="file">
+                        </div>
+
+                        <div class="blocoFormulario">
+                               <button type="submit">Cadastrar</button>
+                        </div>
+                        
+                    </div>
+                </form>
+            </section>
+          </section>
+        <!-- veiculos -->
+        </main>
+    </section>
+    <footer>
+        Todos os Direitos Reservados - John - 2024 - V1
+    </footer>
+
+</body>
+</html>
