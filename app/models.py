@@ -1,4 +1,4 @@
-from . import db
+from app import db
 
 # Tabela de usuários
 class Usuario(db.Model):
@@ -21,10 +21,9 @@ class Veiculo(db.Model):
     placa = db.Column(db.String(10), unique=True, nullable=False)
     disponivel = db.Column(db.Boolean, default=True)
     
-    
+    # Relacionamentos
     reservas = db.relationship('Reserva', backref='veiculo', lazy=True)
     manutencoes = db.relationship('Manutencao', backref='veiculo', lazy=True)
-
 
 class Reserva(db.Model):
     __tablename__ = 'reservas'
@@ -32,10 +31,9 @@ class Reserva(db.Model):
     data_inicio = db.Column(db.DateTime, nullable=False)
     data_fim = db.Column(db.DateTime, nullable=False)
     
-    
+    # Chaves estrangeiras
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
     veiculo_id = db.Column(db.Integer, db.ForeignKey('veiculos.id'), nullable=False)
-
 
 class Manutencao(db.Model):
     __tablename__ = 'manutencoes'
@@ -44,5 +42,5 @@ class Manutencao(db.Model):
     data = db.Column(db.DateTime, nullable=False)
     custo = db.Column(db.Float, nullable=False)
     
-    # Relacionamento com Veiculo
+    # Chave estrangeira
     veiculo_id = db.Column(db.Integer, db.ForeignKey('veiculos.id'), nullable=False)

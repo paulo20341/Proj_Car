@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/app2.css">
+    <title>Reservar Veículo</title>
+</head>
+<body>
+    <section id="header">
+        <div id="menu">
+            <div id="logo">
+                <img src="imagens/logo.png" width="84">
+            </div>
+            <nav>
+                <ul class="poppins-light">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="veiculos.html">Veículos</a></li>
+                    <li><a href="cadastrar_veiculo.html">Cadastrar Veículos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    
+    <section id="content">        
+        <main id="main">
+            <h1>Reservar Veículo</h1>
+            <form id="reservaForm">
+                <input type="hidden" name="usuario_id" value="{{ usuario.id }}">
+                <input type="hidden" name="veiculo_id" value="{{ veiculo.id }}">
+                <p>Você está prestes a reservar o veículo: {{ veiculo.modelo }}</p>
+                <button type="submit">Confirmar Reserva</button>
+            </form>
+        </main>
+    </section>
+
+    <footer>
+        Todos os Direitos Reservados - John - 2024 - V1
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById('reservaForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Impede o envio do formulário
+            // Aqui você pode fazer uma chamada AJAX para processar a reserva, se necessário
+            alert('Reserva feita com sucesso!');  // Alerta de confirmação
+            // Se você estiver processando a reserva com um AJAX, pode adicionar a lógica aqui
+            // Após processar, você pode redirecionar ou atualizar a página se necessário
+        });
+    </script>
+</body>
+</html>

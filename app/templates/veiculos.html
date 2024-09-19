@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/app.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>Rent a Car</title>
 </head>
 <body>
@@ -17,109 +17,156 @@
             </div>
             <nav>
                 <ul class="poppins-light">
-                    <li>Home</li>
-                    <li><a href="veiculos.html"> Veículos</a></li>
-                    <li>Minha conta</li>
-                    <li><a href="contato.html"> Contato</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="veiculos.html">Veículos</a></li>
+                    <li><a href="cadastrar_veiculo.html">Cadastrar Veículos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
                 </ul>
             </nav>
-            <div></div> 
         </div>
     </section>
+    
     <section id="content">        
         <main id="main">
-        <!-- veiculos -->
           <section id="Veiculos">
             <h1>Veículos Disponíveis</h1>
-               <div class="listaVeiculos">
+            <div class="listaVeiculos">
                 <div class="blocosVeiculos">
-                    <img src="imagens/car.png">
+                    <img src="imagens/volkswagen-gol-highline-2015-branco-frente.png">
                     <div class="legenda">
-                        <span class="nome">Gol</span>
-                        <span class="preco">45,00</span>
+                        <span class="nome">Gol 1.6</span>
+                        <span class="preco">R$ 95,00</span>
+                        <a href="editar_veiculo.html?id=1">Editar</a>
+                        <a href="excluir_veiculo.html?id=1" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        <form method="POST" action="reservar.html">
+                            <input type="hidden" name="veiculo_id" value="1">
+                            <input type="hidden" name="usuario_id" value="{{ usuario.id }}">
+                            <button type="submit">Reservar</button>
+                        </form>
                     </div>
                 </div>
                 <div class="blocosVeiculos">
                     <img src="imagens/car.png">
                     <div class="legenda">
-                        <span class="nome">Gol</span>
-                        <span class="preco">45,00</span>
+                        <span class="nome">Corsa 1.0</span>
+                        <span class="preco">R$ 65,00</span>
+                        <a href="editar_veiculo.html?id=2">Editar</a>
+                        <a href="excluir_veiculo.html?id=2" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        <form method="POST" action="reservar.html">
+                            <input type="hidden" name="veiculo_id" value="2">
+                            <input type="hidden" name="usuario_id" value="{{ usuario.id }}">
+                            <button type="submit">Reservar</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="blocosVeiculos">
+                    <img src="imagens/2014-05-08-01-gm-bra-celta-lt-3-4-frente01-08-05-14.webp">
+                    <div class="legenda">
+                        <span class="nome">Celta</span>
+                        <span class="preco">R$ 65,00</span>
+                        <a href="editar_veiculo.html?id=3">Editar</a>
+                        <a href="excluir_veiculo.html?id=3" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        <form method="POST" action="reservar.html">
+                            <input type="hidden" name="veiculo_id" value="3">
+                            <input type="hidden" name="usuario_id" value="{{ usuario.id }}">
+                            <button type="submit">Reservar</button>
+                        </form>
                     </div>
                 </div>
                 <div class="blocosVeiculos">
                     <img src="imagens/car.png">
                     <div class="legenda">
-                        <span class="nome">Gol</span>
-                        <span class="preco">45,00</span>
+                        <span class="nome">Jeep Renegate</span>
+                        <span class="preco">R$ 99,00</span>
+                        <a href="editar_veiculo.html?id=4">Editar</a>
+                        <a href="excluir_veiculo.html?id=4" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        <form method="POST" action="reservar.html">
+                            <input type="hidden" name="veiculo_id" value="4">
+                            <input type="hidden" name="usuario_id" value="{{ usuario.id }}">
+                            <button type="submit">Reservar</button>
+                        </form>
                     </div>
                 </div>
                 <div class="blocosVeiculos">
                     <img src="imagens/car.png">
                     <div class="legenda">
-                        <span class="nome">Gol</span>
-                        <span class="preco">45,00</span>
+                        <span class="nome">Palio 1.4</span>
+                        <span class="preco">R$ 75,00</span>
+                        <a href="editar_veiculo.html?id=5">Editar</a>
+                        <a href="excluir_veiculo.html?id=5" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        <form method="POST" action="reservar.html">
+                            <input type="hidden" name="veiculo_id" value="5">
+                            <input type="hidden" name="usuario_id" value="{{ usuario.id }}">
+                            <button type="submit">Reservar</button>
+                        </form>
                     </div>
                 </div>
                 <div class="blocosVeiculos">
-                    <img src="imagens/car.png">
+                    <img src="imagens/chevrolet-onix-joy-removebg-preview.png">
                     <div class="legenda">
-                        <span class="nome">Gol</span>
-                        <span class="preco">45,00</span>
+                        <span class="nome">Onix</span>
+                        <span class="preco">R$ 95,00</span>
+                        <a href="editar_veiculo.html?id=6">Editar</a>
+                        <a href="excluir_veiculo.html?id=6" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        <form method="POST" action="reservar.html">
+                            <input type="hidden" name="veiculo_id" value="6">
+                            <input type="hidden" name="usuario_id" value="{{ usuario.id }}">
+                            <button type="submit">Reservar</button>
+                        </form>
                     </div>
                 </div>
                 <div class="blocosVeiculos">
-                    <img src="imagens/car.png">
+                    <img src="imagens/VOLKSWAGEN-GOL-GTI-LEILÃO-3.png">
                     <div class="legenda">
-                        <span class="nome">Gol</span>
-                        <span class="preco">45,00</span>
+                        <span class="nome">Gol Quadrado</span>
+                        <span class="preco">R$ 55,00</span>
+                        <a href="editar_veiculo.html?id=7">Editar</a>
+                        <a href="excluir_veiculo.html?id=7" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        <form method="POST" action="reservar.html">
+                            <input type="hidden" name="veiculo_id" value="7">
+                            <input type="hidden" name="usuario_id" value="{{ usuario.id }}">
+                            <button type="submit">Reservar</button>
+                        </form>
                     </div>
                 </div>
                 <div class="blocosVeiculos">
-                    <img src="imagens/car.png">
+                    <img src="imagens/camaro.png">
                     <div class="legenda">
-                        <span class="nome">Gol</span>
-                        <span class="preco">45,00</span>
+                        <span class="nome">Chevrolet Camaro</span>
+                        <span class="preco">R$ 335,00</span>
+                        <a href="editar_veiculo.html?id=8">Editar</a>
+                        <a href="excluir_veiculo.html?id=8" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        <form method="POST" action="reservar.html">
+                            <input type="hidden" name="veiculo_id" value="8">
+                            <input type="hidden" name="usuario_id" value="{{ usuario.id }}">
+                            <button type="submit">Reservar</button>
+                        </form>
                     </div>
                 </div>
                 <div class="blocosVeiculos">
-                    <img src="imagens/car.png">
+                    <img src="imagens/sky.png">
                     <div class="legenda">
-                        <span class="nome">Gol</span>
-                        <span class="preco">45,00</span>
+                        <span class="nome">Gtr Skyline</span>
+                        <span class="preco">R$ 445,00</span>
+                        <a href="editar_veiculo.html?id=9">Editar</a>
+                        <a href="excluir_veiculo.html?id=9" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        <form method="POST" action="reservar.html">
+                            <input type="hidden" name="veiculo_id" value="9">
+                            <input type="hidden" name="usuario_id" value="{{ usuario.id }}">
+                            <button type="submit">Reservar</button>
+                        </form>
                     </div>
                 </div>
-                <div class="blocosVeiculos">
-                    <img src="imagens/car.png">
-                    <div class="legenda">
-                        <span class="nome">Gol</span>
-                        <span class="preco">45,00</span>
-                    </div>
-                </div>
-                <div class="blocosVeiculos">
-                    <img src="imagens/car.png">
-                    <div class="legenda">
-                        <span class="nome">Gol</span>
-                        <span class="preco">45,00</span>
-                    </div>
-                </div>
-                <div class="blocosVeiculos">
-                    <img src="imagens/car.png">
-                    <div class="legenda">
-                        <span class="nome">Gol</span>
-                        <span class="preco">45,00</span>
-                    </div>
-                </div>
-
-               </div>
-            </section>
-        <!-- veiculos -->
+                {% endfor %}
+            </div>
+          </section>
         </main>
     </section>
+
     <footer>
         Todos os Direitos Reservados - John - 2024 - V1
     </footer>
 
     <script src="js/script.js"></script>
-
 </body>
 </html>

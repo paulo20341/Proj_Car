@@ -1,14 +1,10 @@
-from flask import Flask
+from app import create_app, db
 
-app = Flask(__name__)
+app = create_app()
 
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///locadora_veiculos.db'  
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-
-db = SQLAlchemy(app)
-
+# Inicialização do banco de dados (opcional, se você estiver criando as tabelas no início)
+with app.app_context():
+    db.create_all()  # Cria todas as tabelas definidas nos modelos
 
 if __name__ == '__main__':
     app.run(debug=True)

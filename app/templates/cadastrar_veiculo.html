@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Veículo - Rent a Car</title>
+    <link rel="stylesheet" href="css/cadastrar-veiculo.css">
+</head>
+<body>
+    <section id="header">
+        <div id="menu">
+            <div id="logo">
+                <img src="imagens/logo.png" width="84">
+            </div>
+            <nav>
+                <ul class="poppins-light">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="veiculos.html"> Veículos</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <div class="container">
+        <h1>Cadastrar Veículo</h1>
+        <form action="/adicionar-veiculo" method="POST" id="cadastroVeiculoForm">
+            <div class="form-group">
+                <label for="modelo">Modelo do Veículo:</label>
+                <input type="text" id="modelo" name="modelo" required>
+            </div>
+            <div class="form-group">
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca" name="marca" required>
+            </div>
+            <div class="form-group">
+                <label for="ano">Ano:</label>
+                <input type="number" id="ano" name="ano" min="1980" max="2024" required>
+            </div>
+            <div class="form-group">
+                <label for="preco">Preço por Dia (R$):</label>
+                <input type="number" id="preco" name="preco" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" rows="4"></textarea>
+            </div>
+            <button type="submit">Cadastrar Veículo</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('cadastroVeiculoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Veículo cadastrado com sucesso!');
+            // Aqui você pode redirecionar ou processar os dados com uma chamada AJAX
+        });
+    </script>
+</body>
+</html>

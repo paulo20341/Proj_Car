@@ -1,4 +1,3 @@
-# app/__init__.py
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
@@ -14,7 +13,11 @@ def create_app():
     # Inicializar o banco de dados com o app
     db.init_app(app)
 
-    # Importar os modelos para que o SQLAlchemy reconheça as tabelas
+    # Importar os modelos
     from .models import Usuario, Veiculo, Reserva, Manutencao
+
+    # Importar rotas
+    from .routes import bp as veiculos_bp
+    app.register_blueprint(veiculos_bp)
 
     return app
