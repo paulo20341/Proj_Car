@@ -1,18 +1,57 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f7f7f7;
-    color: #333;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* Adicionado para garantir que padding e border sejam incluídos nas dimensões */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.container {
-    width: 400px;
-    margin: 50px auto;
-    background: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+:root {
+    --verde: #07FFA6;
+    --preto: #2A2A2A;
+    --amarelo: #E9C035;
+    --corTexto: #3A3A3A;
+    --corNome: #A7A7A7;
+}
+
+body, html {
+    background-color: #fff !important;
+    height: 100vh;
+}
+
+#header {
+    background-image: url('../imagens/backgroundTopo.png');
+    background-size: cover; /* Alterado para cover para melhor ajuste da imagem */
+    padding: 20px 20px;
+    height: 356px;
+}
+
+#menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #fff;
+    width: 100%;
+    align-items: center;
+    padding: 10px;
+}
+
+#menu nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+#menu nav ul li {
+    list-style: none;
+    font-size: 18px;
+    color: #666666;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+}
+
+#content {
+    padding: 65px 40px;
 }
 
 h1 {
@@ -36,7 +75,6 @@ input, textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    box-sizing: border-box;
 }
 
 button {
@@ -53,3 +91,23 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+footer {
+    background-color: #2A2A2A;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    bottom: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+}
+.container {
+    max-width: 600px; /* Largura máxima do formulário */
+    margin: 0 auto; /* Centraliza o formulário */
+    padding: 20px;
+    background-color: #f9f9f9; /* Cor de fundo do formulário */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+

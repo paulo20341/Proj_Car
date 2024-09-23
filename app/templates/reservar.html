@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/app2.css">
-    <title>Reservar Veículo</title>
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Rent a Car</title>
 </head>
 <body>
     <section id="header">
         <div id="menu">
             <div id="logo">
-                <img src="imagens/logo.png" width="84">
+                <img src="/static/imagens/logo.png" width="84">
             </div>
             <nav>
                 <ul class="poppins-light">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="veiculos.html">Veículos</a></li>
-                    <li><a href="cadastrar_veiculo.html">Cadastrar Veículos</a></li>
-                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/veiculos.html">Veículos</a></li>
+                    <li><a href="/cadastrar_veiculo.html">Cadastrar Veículos</a></li>
+                    <li><a href="/contato.html">Contato</a></li>
                 </ul>
             </nav>
         </div>
@@ -25,13 +28,26 @@
     
     <section id="content">        
         <main id="main">
-            <h1>Reservar Veículo</h1>
-            <form id="reservaForm">
-                <input type="hidden" name="usuario_id" value="{{ usuario.id }}">
-                <input type="hidden" name="veiculo_id" value="{{ veiculo.id }}">
-                <p>Você está prestes a reservar o veículo: {{ veiculo.modelo }}</p>
-                <button type="submit">Confirmar Reserva</button>
-            </form>
+          <section id="Veiculos">
+            <h1>Veículos Disponíveis</h1>
+            <div class="listaVeiculos">
+                {% for veiculo in veiculos %}
+                <div class="blocosVeiculos">
+                    <img src="/static/imagens/{{ veiculo.imagem }}" alt="{{ veiculo.modelo }}">
+                    <div class="legenda">
+                        <span class="nome">{{ veiculo.modelo }}</span>
+                        <span class="preco">R$ {{ veiculo.preco }}</span>
+                        <a href="/editar_veiculo?id={{ veiculo.id }}">Editar</a>
+                        <a href="/excluir_veiculo?id={{ veiculo.id }}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        <form method="POST" action="/reservar/{{ veiculo.id }}">
+                            <input type="hidden" name="usuario_id" value="{{ usuario.id }}">
+                            <button type="submit">Reservar</button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+          </section>
         </main>
     </section>
 
@@ -39,15 +55,6 @@
         Todos os Direitos Reservados - John - 2024 - V1
     </footer>
 
-    <script src="js/script.js"></script>
-    <script>
-        document.getElementById('reservaForm').addEventListener('submit', function(event) {
-            event.preventDefault();  // Impede o envio do formulário
-            // Aqui você pode fazer uma chamada AJAX para processar a reserva, se necessário
-            alert('Reserva feita com sucesso!');  // Alerta de confirmação
-            // Se você estiver processando a reserva com um AJAX, pode adicionar a lógica aqui
-            // Após processar, você pode redirecionar ou atualizar a página se necessário
-        });
-    </script>
+    <script src="/static/js/script.js"></script>
 </body>
 </html>

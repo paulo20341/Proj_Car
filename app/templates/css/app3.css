@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Adiciona box-sizing para garantir que padding e border não aumentem o tamanho dos elementos */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+:root {
+    --verde: #07FFA6;
+    --preto: #2A2A2A;
+    --amarelo: #E9C035;
+    --corTexto: #3A3A3A;
+    --corNome: #A7A7A7;
+}
+
+html, body {
+    background-color: #fff !important;
+    min-height: 100vh; /* Garantir que o body ocupe pelo menos 100% da altura da tela */
+    display: flex;
+    flex-direction: column; /* Permite que o footer fique na parte inferior */
+}
+
+#header {
+    background-image: url('../imagens/backgroundTopo.png');
+    background-size: 100%;
+    padding: 20px 20px;
+    height: 356px;
+}
+
+#menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #fff;
+    width: 100%;
+    align-items: center;
+    padding: 10px;
+}
+
+#menu nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+#menu nav ul li {
+    list-style: none;
+    font-size: 18px;
+    color: #666666;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+}
+
+/* Conteúdo */
+#content {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;}
+
+#main {
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}
+
+h1 {
+    color: var(--corNome);
+    width: 100%;
+    text-align: center;
+    font-weight: 100;
+    margin-bottom: 40px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+button {
+    background-color: #141208;
+    padding: 15px 20px;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2A2A2A; /* Cor de fundo ao passar o mouse */
+}
+
+footer {
+    background-color: #2A2A2A;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    /* Removido o 'bottom' aqui, não é necessário */
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+}
+#reservaForm {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9; /* Fundo claro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#reservaForm p {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #0056b3; /* Cor do texto */
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus {
+    border-color: #0056b3; /* Cor do foco */
+    outline: none; /* Remove o contorno padrão */
+}
+
+button {
+    background-color: #0056b3; /* Azul */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #004494; /* Azul mais escuro ao passar o mouse */
+}

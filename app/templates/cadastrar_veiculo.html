@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Veículo - Rent a Car</title>
-    <link rel="stylesheet" href="css/cadastrar-veiculo.css">
+    <link rel="stylesheet" href="css/app2.css">
+    <title>Cadastrar Veículo</title>
 </head>
 <body>
     <section id="header">
@@ -14,47 +14,38 @@
             </div>
             <nav>
                 <ul class="poppins-light">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="veiculos.html"> Veículos</a></li>
-                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="veiculos.html">Veículos</a></li>
+                    <li><a href="cadastrar_veiculo.html">Cadastrar Veículos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
                 </ul>
             </nav>
         </div>
     </section>
-
-    <div class="container">
-        <h1>Cadastrar Veículo</h1>
-        <form action="/adicionar-veiculo" method="POST" id="cadastroVeiculoForm">
-            <div class="form-group">
-                <label for="modelo">Modelo do Veículo:</label>
+    
+    <section id="content">        
+        <main id="main">
+            <h1>Cadastrar Veículo</h1>
+            <form action="/veiculos/adicionar" method="POST" id="cadastrarVeiculoForm">
+                <label for="modelo">Modelo:</label>
                 <input type="text" id="modelo" name="modelo" required>
-            </div>
-            <div class="form-group">
+                
                 <label for="marca">Marca:</label>
                 <input type="text" id="marca" name="marca" required>
-            </div>
-            <div class="form-group">
+                
                 <label for="ano">Ano:</label>
-                <input type="number" id="ano" name="ano" min="1980" max="2024" required>
-            </div>
-            <div class="form-group">
-                <label for="preco">Preço por Dia (R$):</label>
-                <input type="number" id="preco" name="preco" step="0.01" required>
-            </div>
-            <div class="form-group">
-                <label for="descricao">Descrição:</label>
-                <textarea id="descricao" name="descricao" rows="4"></textarea>
-            </div>
-            <button type="submit">Cadastrar Veículo</button>
-        </form>
-    </div>
+                <input type="number" id="ano" name="ano" required>
+                
+                <label for="placa">Placa:</label>
+                <input type="text" id="placa" name="placa" required>
+                
+                <button type="submit">Adicionar Veículo</button>
+            </form>
+        </main>
+    </section>
 
-    <script>
-        document.getElementById('cadastroVeiculoForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Veículo cadastrado com sucesso!');
-            // Aqui você pode redirecionar ou processar os dados com uma chamada AJAX
-        });
-    </script>
+    <footer>
+        Todos os Direitos Reservados - John - 2024 - V1
+    </footer>
 </body>
 </html>

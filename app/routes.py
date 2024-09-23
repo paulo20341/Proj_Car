@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, flash
-from models import Veiculo, Reserva  # Importação correta
-from app import db
-from datetime import datetime, timedelta
+from .models import Veiculo, Reserva  # Usando o ponto para referenciar o módulo dentro do pacote
+from . import db
+
 bp = Blueprint('veiculos', __name__)
 
 @bp.route('/veiculos')
@@ -21,7 +21,7 @@ def adicionar_veiculo():
         db.session.add(novo_veiculo)
         db.session.commit()
         flash('Veículo adicionado com sucesso!', 'success')
-        return redirect('/veiculos')
+        return redirect('/veiculos')  # Redireciona para a lista de veículos
     
     return render_template('adicionar_veiculo.html')
 
@@ -41,7 +41,7 @@ def editar_veiculo(id):
     
     return render_template('editar_veiculo.html', veiculo=veiculo)
 
-@bp.route('/veiculos/excluir/<int:id>')
+@bp.route('/veiculos/excluir/<int:id>', methods=['POST'])
 def excluir_veiculo(id):
     veiculo = Veiculo.query.get_or_404(id)
     db.session.delete(veiculo)
