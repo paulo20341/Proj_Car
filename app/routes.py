@@ -122,3 +122,8 @@ def login():
 
     usuarios = Usuario.query.all()  # Busca todos os usuários
     return render_template('login.html', usuario=usuarios)  # Passa a lista de usuários para o template
+
+@bp.route('/usuarios')
+def listar_usuarios():
+    usuarios = Usuario.query.all()
+    return render_template('listar_usuarios_login.html', Usuario=Usuario)

@@ -6,7 +6,7 @@
     <title>Usuarios Cadastrados</title>
 </head>
 <body>
-    <h1>Veículos Alugados</h1>
+    <h1>Usuarios Cadastrados</h1>
     <table>
         <thead>
             <tr>
@@ -20,15 +20,14 @@
             {% for usuario in usuarios  %}
                 <tr>
                     <td>{{ usuario_id }}</td>
-                    <td>{{ veiculo.modelo }}</td>
-                    <td>{{ veiculo.marca }}</td>
-                    <td>{{ veiculo.ano }}</td>
-                    <td>{{ veiculo.placa }}</td>
-                    <td>{{ veiculo.usuario_id }}</td>
+                    <td>{{ usuario_nome }}</td>
+                    <td>{{ usuario_email }}</td>
+                    <td>{{ usuario_senha }}</td>
+                    
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-    <a href="/veiculos">Voltar</a>
+    <a href="/index.html">Voltar</a>
 </body>
 </html>
