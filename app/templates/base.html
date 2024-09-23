@@ -6,6 +6,9 @@
     <title>Base</title>
 </head>
 <body>
-    
+    <h1>Usuários Registrados</h1>
+    {% for usuario in usuario %}
+        <p>{{ usuario.nome }} - R$ {{ usuario.email }}</p>
+    {% endfor %}
 </body>
 </html>

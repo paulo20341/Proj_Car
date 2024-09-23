@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veículos Alugados</title>
+    <title>Usuarios Cadastrados</title>
 </head>
 <body>
     <h1>Veículos Alugados</h1>
     <table>
         <thead>
             <tr>
-                <th>ID Reserva</th>
-                <th>Modelo</th>
-                <th>Marca</th>
-                <th>Ano</th>
-                <th>Placa</th>
-                <th>ID Usuário</th>
+                <th>nome</th>
+                <th>email</th>
+                <th>Senha</th>
+                
             </tr>
         </thead>
         <tbody>
-            {% for veiculo in veiculos  %}
+            {% for usuario in usuarios  %}
                 <tr>
-                    <td>{{ veiculo.id }}</td>
+                    <td>{{ usuario_id }}</td>
                     <td>{{ veiculo.modelo }}</td>
                     <td>{{ veiculo.marca }}</td>
                     <td>{{ veiculo.ano }}</td>
