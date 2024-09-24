@@ -1,7 +1,5 @@
-from flask import Blueprint, render_template, request, redirect, flash, session
-from sqlalchemy.exc import IntegrityError
-from .models import Veiculo, Reserva, Usuario  # Certifique-se de que Usuario esteja definido
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Blueprint, render_template, request, redirect, flash, url_for, session
+from .models import Veiculo, Reserva, User
 from . import db
 
 bp = Blueprint('veiculos', __name__)
@@ -19,23 +17,12 @@ def adicionar_veiculo():
         ano = request.form.get('ano')
         placa = request.form.get('placa')
 
-        # Verificar se a placa já existe
-        if Veiculo.query.filter_by(placa=placa).first():
-            flash('Erro: A placa já está registrada!', 'danger')
-            return redirect('/veiculos/adicionar')
-
         novo_veiculo = Veiculo(modelo=modelo, marca=marca, ano=ano, placa=placa)
-
-        try:
-            db.session.add(novo_veiculo)
-            db.session.commit()
-            flash('Veículo adicionado com sucesso!', 'success')
-            return redirect('/veiculos')
-        except IntegrityError:
-            db.session.rollback()  # Desfaz a transação em caso de erro
-            flash('Erro: Não foi possível adicionar o veículo. Verifique os dados.', 'danger')
-            return redirect('/veiculos/adicionar')
-
+        db.session.add(novo_veiculo)
+        db.session.commit()
+        flash('Veículo adicionado com sucesso!', 'success')
+        return redirect(url_for('veiculos.listar_veiculos'))
+    
     return render_template('adicionar_veiculo.html')
 
 @bp.route('/veiculos/editar/<int:id>', methods=['GET', 'POST'])
@@ -48,15 +35,10 @@ def editar_veiculo(id):
         veiculo.ano = request.form.get('ano')
         veiculo.placa = request.form.get('placa')
 
-        try:
-            db.session.commit()
-            flash('Veículo atualizado com sucesso!', 'success')
-            return redirect('/veiculos')
-        except IntegrityError:
-            db.session.rollback()
-            flash('Erro: A placa já está registrada!', 'danger')
-            return redirect(f'/veiculos/editar/{id}')
-
+        db.session.commit()
+        flash('Veículo atualizado com sucesso!', 'success')
+        return redirect(url_for('veiculos.listar_veiculos'))
+    
     return render_template('editar_veiculo.html', veiculo=veiculo)
 
 @bp.route('/veiculos/excluir/<int:id>', methods=['POST'])
@@ -65,14 +47,14 @@ def excluir_veiculo(id):
     db.session.delete(veiculo)
     db.session.commit()
     flash('Veículo excluído com sucesso!', 'success')
-    return redirect('/veiculos')
+    return redirect(url_for('veiculos.listar_veiculos'))
 
 @bp.route('/reservar/<int:veiculo_id>', methods=['GET', 'POST'])
 def reservar(veiculo_id):
     veiculo = Veiculo.query.get_or_404(veiculo_id)
     
     if request.method == 'POST':
-        usuario_id = request.form.get('usuario_id')
+        usuario_id = session.get('user_id')  # Captura o ID do usuário logado
         nova_reserva = Reserva(
             veiculo_id=veiculo.id,
             usuario_id=usuario_id,
@@ -84,46 +66,82 @@ def reservar(veiculo_id):
         db.session.add(nova_reserva)
         db.session.commit()
         flash('Reserva feita com sucesso!', 'success')
-        return redirect('/veiculos')
+        return redirect(url_for('veiculos.listar_veiculos'))
     
     return render_template('reservar.html', veiculo=veiculo)
 
+@bp.route('/menu')
+def inicial():
+    return render_template('index.html')
 
+@bp.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        user = request.form['user']
+        sena = request.form['sena']
+        cpf = request.form['cpf']
 
+        existing_user = User.query.filter_by(Usuario=user).first()
 
-@bp.route('/login', methods=['GET', 'POST'])
+        if existing_user:
+            flash('Este usuário já existe. Por favor, escolha outro.', 'danger')
+            return redirect(url_for('veiculos.register'))  # Corrija o nome da blueprint
+
+        usuario = User(Usuario=user, Contraseña=sena, CPF=cpf)
+        db.session.add(usuario)
+        db.session.commit()
+
+        flash('Usuário registrado com sucesso.', 'success')
+        return redirect(url_for('veiculos.login'))  # Corrija o nome da blueprint para a rota de login
+
+    return render_template('register.html')
+
+@bp.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
-        nome = request.form.get('nome')
-        email = request.form.get('email')
-        senha = request.form.get('senha')
+        user = request.form['user']
+        sena = request.form['sena']
 
-        # Verificar se o e-mail já existe
-        if Usuario.query.filter_by(email=email).first():
-            flash('Erro: O e-mail já está registrado!', 'danger')
-            return redirect('/login')
+        usuario = User.query.filter_by(Usuario=user).first()
 
-        # Criar novo usuário
-        novo_usuario = Usuario(
-            nome=nome,
-            email=email,
-            senha=generate_password_hash(senha)
-        )
+        if usuario and usuario.Contraseña == sena:
+            session['user_id'] = usuario.id
+            session['username'] = usuario.Usuario
 
-        try:
-            db.session.add(novo_usuario)
-            db.session.commit()
-            flash('Usuário registrado com sucesso! Você pode fazer login agora.', 'success')
-            return redirect('/login')
-        except IntegrityError:
-            db.session.rollback()
-            flash('Erro: Não foi possível registrar o usuário. Verifique os dados.', 'danger')
-            return redirect('/login')
+            flash('Login realizado com sucesso', 'success')
+            return redirect(url_for('veiculos.inicial'))  # Corrija para redirecionar à rota inicial na blueprint correta
+        else:
+            flash('Nome de usuário ou senha incorretos', 'danger')
 
-    usuarios = Usuario.query.all()  # Busca todos os usuários
-    return render_template('login.html', usuario=usuarios)  # Passa a lista de usuários para o template
+    return render_template('login.html')
 
 @bp.route('/usuarios')
 def listar_usuarios():
-    usuarios = Usuario.query.all()
-    return render_template('listar_usuarios_login.html', Usuario=Usuario)
+    usuarios = User.query.all()
+    return render_template('listar_usuarios.html', usuarios=usuarios)
+
+@bp.route('/usuarios/adicionar', methods=['GET', 'POST'])
+def adicionar_usuario():
+    if request.method == 'POST':
+        user = request.form['user']
+        sena = request.form['sena']
+        cpf = request.form['cpf']
+
+        existing_user = User.query.filter_by(Usuario=user).first()
+
+        if existing_user:
+            flash('Este usuário já existe. Por favor, escolha outro.', 'danger')
+            return redirect('/usuarios/adicionar')  # Direciona diretamente para a rota
+
+        usuario = User(Usuario=user, Contraseña=sena, CPF=cpf)
+        db.session.add(usuario)
+        db.session.commit()
+
+        flash('Usuário registrado com sucesso.', 'success')
+        return redirect('/usuarios')  # Direciona para a lista de usuários
+
+    return render_template('adicionar_usuario.html')
+
+
+
+

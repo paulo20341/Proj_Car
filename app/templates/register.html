@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="static/css/app.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <title>Rent a Car</title>
+    </head>
+<body>
+    <div id="logo"></div>
+        <img src="static/imagens/logo.png" width="190" height="190">
+    </div>
+
+    <section id="content">        
+        <main id="main">
+          <section id="Veiculos">
+            <h1>Cadastro de Usuario</h1>
+            <section id="secaoFormulario"> 
+                <form method="post" action="/register" enctype="multipart/form-data">
+                    <div id="formulario">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <h1 class="{{ category }}" style="color: red;">{{ message }}</h1>
+                            {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <div class="blocoFormulario">
+                            <label>Nombre de Usuario</label>
+                            <input type="text" name="user" placeholder="Usuario" class="inputBase" required>
+                        </div>
+                        <div class="blocoFormulario">
+                            <label>Contraseña</label>
+                            <input type="text" name="sena" placeholder="Contraseña" class="inputBase" required>
+                        </div>
+                        <div class="blocoFormulario">
+                            <label>CPF</label>
+                            <input type="text" name="cpf" placeholder="CPF" class="inputBase" required>
+                        </div>
+                        <div class="blocoFormulario">
+                               <button type="submit">Cadastrar</button>
+                        </div>
+                        <h1>Por si tienes una Cuenta</h1>
+                        <div class="blocoFormulario">
+                               <a href="/login">Iniciar Sessão</a>
+                        </div>
+                        
+                    </div>
+                </form>
+            </section>
+          </section>
+        </main>
+    </section>
+
+
+
+    <footer>
+        Todos os Direitos Reservados -  - 2024 
+    </footer>
+</body>
+</html>
+

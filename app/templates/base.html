@@ -1,14 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Aluguel de Carros</title>
 </head>
 <body>
-    <h1>Usuários Registrados</h1>
-    {% for usuario in usuario %}
-        <p>{{ usuario.nome }} - R$ {{ usuario.email }}</p>
-    {% endfor %}
+{% block manu %}
+    <section id="header">
+        <div id="menu">
+            <div id="logo">
+                <img src="imagens/logo.png" width="84">
+            </div>
+            <nav>
+                <ul class="poppins-light">
+                    <li><a href="menu">Início</a></li>
+                    <li><a href="veiculos">Veículos</a></li>
+
+                    {% if session['username'] == 'admin' %}
+                    <li><a href="formularios">Cadastrar Veículos</a></li>
+                    {% endif %}
+
+                    <li></li>
+                    <li></li>
+                    <li>
+                    {% if session['username'] %}
+                        <p>{{ session['username'] }}</p>
+                        <a href="/login">Sair</a>
+                    {% else %}
+                        <p>Você não está logado.</p>
+                        <a href="/login">Entrar</a>
+                    {% endif %}</li>
+                </ul>
+            </nav>
+            <div></div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block conte %}
+
+{% endblock %}
+    <footer>
+        Paulo - Todos os direitos reservados
+    </footer>
+
 </body>
 </html>

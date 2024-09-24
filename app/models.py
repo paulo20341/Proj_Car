@@ -27,3 +27,12 @@ class Reserva(db.Model):
     local_retirada = db.Column(db.String(255))  # Coluna que você mencionou
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)  # Tabela corrigida
     veiculo_id = db.Column(db.Integer, db.ForeignKey('veiculos.id'), nullable=False)  # Tabela corrigida
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    Usuario = db.Column(db.String(80), unique=True, nullable=False)
+    Contraseña = db.Column(db.String(120), nullable=False)
+    CPF = db.Column(db.String(11), unique=True, nullable=False)
+
+    def __repr__(self):
+        return f'<User {self.Usuario}>'

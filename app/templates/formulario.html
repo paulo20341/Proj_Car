@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block menu%}
+{%  endblock  %}
+
+
+{% block conte %}
+    <section id="content">        
+        <main id="main">
+        <!-- veiculos -->
+          <section id="Veiculos">
+            <h1>Formulário Cadastrar Veículos</h1>
+            <h1 style="color: rgb(4, 228, 4);">{{res}}</h1>
+            <section id="secaoFormulario"> 
+                <form method="post" action="/formularios" enctype="multipart/form-data">
+                    <div id="formulario">
+                        <div class="blocoFormulario">
+                            <label>Marca</label>
+                            <input type="text" name="marca" placeholder="Nome veículo" class="inputBase">
+                        </div>
+                        <div class="blocoFormulario">
+                            <label>Modelo</label>
+                            <input type="text" name="modelo" placeholder="Modelo" class="inputBase">
+                        </div>
+                        <div class="blocoFormulario">
+                            <label>Placa</label>
+                            <input type="text" name="placa" placeholder="Placa" class="inputBase">
+                        </div>
+                        <div class="blocoFormulario">
+                            <label>Valor</label>
+                            <input type="text" name="valor" placeholder="Valor" class="inputBase">
+                        </div>
+                        <div class="blocoFormulario">
+                            <label>Status</label>
+                            <select class="inputBase">
+                                <option value="0">Inativado</option>
+                                <option value="1" selected>Ativo</option>
+                            </select>
+                        </div>
+                        <div class="blocoFormulario">
+                            <label>Imagem</label>
+                            <input type="file" name="file">
+                        </div>
+
+                        <div class="blocoFormulario">
+                               <button type="submit">Cadastrar</button>
+                        </div>
+                        
+                    </div>
+                </form>
+            </section>
+          </section>
+        <!-- veiculos -->
+        </main>
+    </section>
+    
+{% endblock %}

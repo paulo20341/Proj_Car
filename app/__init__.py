@@ -18,4 +18,4 @@ def create_app():
     from .routes import bp as veiculos_bp
     app.register_blueprint(veiculos_bp)
 
-    return app  # Corrigido: deve retornar a instância do app
+    return app

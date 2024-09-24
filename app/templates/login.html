@@ -25,10 +25,27 @@
     </div>
 
     <script>
-        // Simulação de redirecionamento após login
+        // Enviar credenciais de login via POST para o servidor
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            window.location.href = 'veiculos.html'; // Redireciona para a página de veículos
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '/veiculos'; // Redireciona para a página de veículos
+                } else {
+                    alert(data.message || 'Erro ao logar!');
+                }
+            })
+            .catch(error => console.error('Error:', error));
         });
     </script>
 </body>
