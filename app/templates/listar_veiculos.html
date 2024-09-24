@@ -1,36 +1,43 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veículos Alugados</title>
-</head>
-<body>
-    <h1>Veículos Alugados</h1>
+{% extends "base.html" %}
+
+{% block title %}Lista de Veículos{% endblock %}
+
+{% block conte %}
+    <h1>Lista de Veículos</h1>
+
+    {% if session.get('username') == 'admin' %}
+        <a href="/veiculos/adicionar">Adicionar Veículos</a>
+    {% endif %}
+    
+    <a href="/menu">Voltar</a>  <!-- Link para voltar -->
+
     <table>
         <thead>
             <tr>
-                <th>ID Reserva</th>
-                <th>Modelo</th>
+                <th>ID</th>
                 <th>Marca</th>
-                <th>Ano</th>
+                <th>Modelo</th>
                 <th>Placa</th>
-                <th>ID Usuário</th>
+                <th>Valor</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            {% for veiculo in veiculos  %}
-                <tr>
-                    <td>{{ veiculo.id }}</td>
-                    <td>{{ veiculo.modelo }}</td>
-                    <td>{{ veiculo.marca }}</td>
-                    <td>{{ veiculo.ano }}</td>
-                    <td>{{ veiculo.placa }}</td>
-                    <td>{{ veiculo.usuario_id }}</td>
-                </tr>
+            {% for veiculo in veiculos %}
+            <tr>
+                <td>{{ veiculo.id }}</td>
+                <td>{{ veiculo.Marca }}</td>
+                <td>{{ veiculo.Modelo }}</td>
+                <td>{{ veiculo.Placa }}</td>
+                <td>{{ veiculo.Valor }}</td>
+                <td>
+                    <a href="/veiculos/editar/{{ veiculo.id }}">Editar</a>
+                    <form action="/veiculos/excluir/{{ veiculo.id }}" method="POST" style="display:inline;">
+                        <button type="submit">Excluir</button>
+                    </form>
+                </td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
-    <a href="/veiculos">Voltar</a>
-</body>
-</html>
+{% endblock %}

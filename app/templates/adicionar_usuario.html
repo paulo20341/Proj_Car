@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Usuário</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Adicionar Usuário{% endblock %}
+
+{% block conte %}
     <h1>Adicionar Usuário</h1>
     
     <form action="/usuarios/adicionar" method="POST">
@@ -22,5 +19,4 @@
     </form>
 
     <a href="/usuarios">Voltar à lista de usuários</a>
-</body>
-</html>
+{% endblock %}

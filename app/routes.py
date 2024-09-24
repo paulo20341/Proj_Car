@@ -4,6 +4,15 @@ from . import db
 
 bp = Blueprint('veiculos', __name__)
 
+
+@bp.route('/')
+def index():
+    return redirect('/menu')  # Redireciona para a página inicial que você deseja
+
+@bp.route('/menu')
+def menu():
+    return render_template('base.html')
+
 @bp.route('/veiculos')
 def listar_veiculos():
     veiculos = Veiculo.query.all()
